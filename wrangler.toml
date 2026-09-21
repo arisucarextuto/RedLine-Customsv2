@@ -1,0 +1,11 @@
+name = "redline-customs-calculator"
+compatibility_date = "2026-09-19"
+pages_build_output_dir = "."
+
+# Cloudflare DashboardでPagesプロジェクトにD1をBindingする場合、
+# 下記[[d1_databases]]は必須ではありません。
+# Wranglerで設定する場合はdatabase_idを自分のD1 IDへ変更してください。
+[[d1_databases]]
+binding = "DB"
+database_name = "redline-customs-db"
+database_id = "38780b9c-833d-4b03-a1a5-64a969f59cd5"

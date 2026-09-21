@@ -1,0 +1,2 @@
+import {csv,requireAuth} from '../../_shared.js';
+export async function onRequestGet({request,env}){const a=await requireAuth(request,env,['admin']);if(a.response)return a.response;const {results}=await env.DB.prepare('SELECT id,category,name,price,pd_ems_half,max_qty,active,sort_order FROM products ORDER BY sort_order,id').all();return csv([['ID','カテゴリ','商品名','価格','PD/EMS半額','最大数量','有効','並び順'],...results.map(x=>[x.id,x.category,x.name,x.price,x.pd_ems_half?'対象':'対象外',x.max_qty??'',x.active?'有効':'無効',x.sort_order])],'redline_products.csv')}

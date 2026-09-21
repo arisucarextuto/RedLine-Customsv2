@@ -1,0 +1,2 @@
+import {csv,requireAuth} from '../../_shared.js';
+export async function onRequestGet({request,env}){const a=await requireAuth(request,env,['admin']);if(a.response)return a.response;const {results}=await env.DB.prepare('SELECT id,username,display_name,role,active,created_at,updated_at FROM users ORDER BY id').all();return csv([['ID','ユーザー名','表示名','権限','有効','作成日時','更新日時'],...results.map(x=>[x.id,x.username,x.display_name,x.role,x.active?'有効':'無効',x.created_at,x.updated_at])],'redline_users.csv')}
