@@ -2,7 +2,7 @@ import {
     json,
     body,
     hashPassword
-} from '../../_shared.js';
+} from '../_shared.js';
 
 export async function onRequestPost({ request, env }) {
     try {
