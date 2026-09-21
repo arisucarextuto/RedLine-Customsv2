@@ -13,7 +13,7 @@ const money = n =>
 async function api(url, opt) {
 const r = await fetch(url, opt);
 
-```
+
 if (r.status === 401) {
     location.href = '/login.html';
     throw Error('login');
@@ -26,7 +26,7 @@ if (!r.ok) {
 }
 
 return d;
-```
+
 
 }
 
@@ -37,7 +37,7 @@ return d;
 async function init() {
 const me = await api('/api/me');
 
-```
+
 user = me.user;
 
 staffName.textContent =
@@ -57,7 +57,7 @@ const d = await api('/api/products');
 products = d.products;
 
 render();
-```
+
 
 }
 
@@ -68,7 +68,7 @@ render();
 function render() {
 const groups = {};
 
-```
+
 for (const p of products) {
     (groups[p.category] ??= []).push(p);
 }
@@ -178,7 +178,7 @@ document
     });
 
 updateTotal();
-```
+
 
 }
 
@@ -189,7 +189,7 @@ updateTotal();
 function setQ(id, q) {
 const p = products.find(x => x.id === id);
 
-```
+
 q = Math.max(
     0,
     Math.floor(Number(q) || 0)
@@ -205,7 +205,7 @@ if (p.max_qty !== null) {
 qty[id] = q;
 
 render();
-```
+
 
 }
 
@@ -216,7 +216,7 @@ render();
 function updateTotal() {
 let t = 0;
 
-```
+
 for (const p of products) {
 
     const q = qty[p.id] || 0;
@@ -232,7 +232,7 @@ for (const p of products) {
 total.textContent = money(t);
 
 return t;
-```
+
 
 }
 
@@ -263,7 +263,7 @@ p => (qty[p.id] || 0) > 0
 )
 .map(p => {
 
-```
+
         const q = qty[p.id];
 
         const u =
@@ -279,7 +279,7 @@ p => (qty[p.id] || 0) > 0
             subtotal: u * q
         };
     });
-```
+
 
 }
 
@@ -292,7 +292,7 @@ const b of document.querySelectorAll('.tab')
 ) {
 b.onclick = () => {
 
-```
+
     document
         .querySelectorAll('.tab')
         .forEach(x =>
@@ -305,7 +305,7 @@ b.onclick = () => {
 
     render();
 };
-```
+
 
 }
 
@@ -315,7 +315,7 @@ b.onclick = () => {
 
 copyBill.onclick = async () => {
 
-```
+
 const t = updateTotal();
 
 // 0円の場合
@@ -330,7 +330,7 @@ const text = String(t);
 output.value = text;
 
 await navigator.clipboard.writeText(text);
-```
+
 
 };
 
@@ -340,14 +340,14 @@ await navigator.clipboard.writeText(text);
 
 copyThanks.onclick = async () => {
 
-```
+
 const text =
     'この度はRedLine Customsをご利用いただき、ありがとうございました。';
 
 output.value = text;
 
 await navigator.clipboard.writeText(text);
-```
+
 
 };
 
@@ -357,7 +357,7 @@ await navigator.clipboard.writeText(text);
 
 saveLog.onclick = async () => {
 
-```
+
 try {
 
     const items = selected();
@@ -398,7 +398,7 @@ try {
     alert(e.message);
 
 }
-```
+
 
 };
 
@@ -408,7 +408,7 @@ try {
 
 logoutBtn.onclick = async () => {
 
-```
+
 await fetch(
     '/api/logout',
     {
@@ -417,7 +417,7 @@ await fetch(
 );
 
 location.href = '/login.html';
-```
+
 
 };
 
