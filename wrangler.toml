@@ -8,4 +8,4 @@ pages_build_output_dir = "."
 [[d1_databases]]
 binding = "DB"
 database_name = "redline-customs-db"
-database_id = "38780b9c-833d-4b03-a1a5-64a969f59cd5"
+database_id = "55f56c7a-a436-436d-9629-3eaf453b2651"
